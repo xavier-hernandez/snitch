@@ -29,7 +29,7 @@ jobs:
         GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} CGO_ENABLED=1 go build -ldflags "-s -w" -o build/${{ matrix.goos }}-${{ matrix.goarch }}/snitch
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: snitch-${{ matrix.goos }}-${{ matrix.goarch }}
         path: build/${{ matrix.goos }}-${{ matrix.goarch }}/snitch*
