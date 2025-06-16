@@ -1,5 +1,5 @@
 # SNITCH
-## VERY BETA
+## VERY BETA (still learning GO)
 
 Retrieves certain server info - Lists docker containers and NPM hosts. Made for Linux but works for Windows too.
 
