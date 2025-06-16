@@ -1,7 +1,7 @@
 # SNITCH
 ## VERY BETA
 
-Retrieves certain server info - Lists docker containers and NPM hosts
+Retrieves certain server info - Lists docker containers and NPM hosts. Made for Linux but works for Windows too.
 
 Wrote this because I wanted to be able to snapshot the current status of the server rather than running a bunch of commands.
 
@@ -37,3 +37,7 @@ NPM Records:
     - ["redirect.com"] -> www.redirect.com
     - ["old-site.org"] -> older-site.org [DELETED]
 ```  
+
+Download the latest release or try something like for Linux.
+
+curl -L https://github.com/xavier-hernandez/snitch/releases/download/v.0.01/snitch -o /tmp/snitch && chmod +x /tmp/snitch && /tmp/snitch
