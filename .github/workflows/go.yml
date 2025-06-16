@@ -40,3 +40,19 @@ jobs:
       with:
         name: snitch-${{ matrix.goos }}-${{ matrix.goarch }}
         path: build/${{ matrix.goos }}-${{ matrix.goarch }}/snitch*
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download artifacts
+      uses: actions/download-artifact@v3
+      with:
+        path: ./artifacts
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: ./artifacts/**/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}        
