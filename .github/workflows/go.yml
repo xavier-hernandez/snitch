@@ -1,0 +1,35 @@
+name: Build Go Binaries
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:  # allow manual trigger
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux, windows]
+        goarch: [amd64]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.24.4'   # or your version
+
+    - name: Build
+      run: |
+        mkdir -p build/${{ matrix.goos }}-${{ matrix.goarch }}
+        GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} CGO_ENABLED=1 go build -ldflags "-s -w" -o build/${{ matrix.goos }}-${{ matrix.goarch }}/snitch
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: snitch-${{ matrix.goos }}-${{ matrix.goarch }}
+        path: build/${{ matrix.goos }}-${{ matrix.goarch }}/snitch*
