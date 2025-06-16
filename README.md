@@ -39,5 +39,6 @@ NPM Records:
 ```  
 
 Download the latest release or try something like for Linux.
-
+```bash
 curl -L https://github.com/xavier-hernandez/snitch/releases/download/v.0.01/snitch -o /tmp/snitch && chmod +x /tmp/snitch && /tmp/snitch
+```
